@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'apex-front';
+  backend:string=`nestJS`;
+  frontend:string =`angularJS`;
+  scrapUrl:string=`https://www.naranja.com/comercios-amigos`;
+  serverUrl:string = `http://localhost:3000/scrap`;
 }

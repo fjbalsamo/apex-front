@@ -1,0 +1,31 @@
+<div class="container my-5">
+    <div class="row" *ngIf="loading; then yesBlock; else noBlock">
+       
+    </div>
+</div>
+
+<ng-template #yesBlock>
+    <div class="col">
+        <h4 class="text-center">waiting for server reply</h4>
+        <h6 class="text-center">{{fetchUrl}}</h6>
+    </div>
+</ng-template>
+
+
+<ng-template #noBlock>
+    <div class="col">
+        <h3 class="text-danger text-center" *ngIf="data.error; else okBlock">
+            Server error
+        </h3>
+        <ng-template #okBlock>
+            <h3 class="text-center">
+                last update {{data.timestamp | date:'dd/MM/YYYY HH:mm:ss'}}
+            </h3>
+            <p class="text-center">
+                <button class="btn btn-primary" (click)="refresh()">refresh</button>
+            </p>
+            <app-item *ngFor="let item of data.data" [item]="item"></app-item>
+        </ng-template>
+    </div>
+    
+</ng-template>
